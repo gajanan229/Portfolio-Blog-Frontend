@@ -1,0 +1,23 @@
+/* Hide the scrollbar for the chat messages container */
+.chat-scroll-container {
+    scrollbar-width: none !important; /* Firefox */
+    -ms-overflow-style: none !important; /* IE and Edge */
+}
+
+.chat-scroll-container::-webkit-scrollbar {
+    display: none !important; /* Chrome, Safari, Opera */
+}
+
+.message-list .rce-container-mbox .rce-mbox .rce-mbox-body .rce-mbox-text.left {
+    background-color: #007BFF !important; /* Blue background */
+    color: #fff !important;              /* White text */
+    border: none !important;
+    border-radius: 10px !important;      /* Rounded corners if desired */
+    padding: 8px !important;            /* Spacing inside the bubble */
+    display: inline-block !important;
+}
+
+/* Align user (right) message text to the right */
+.message-list .rce-container-mbox .rce-mbox .rce-mbox-body .rce-mbox-text.right {
+    text-align: right !important;
+}
