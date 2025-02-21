@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { MessageList, Input, Button } from "react-chat-elements";
 import "react-chat-elements/dist/main.css";
-import '/Chatbot.css';
+import '../styles/Chatbot.css';
 import ReactMarkdown from 'react-markdown'; 
 
 
