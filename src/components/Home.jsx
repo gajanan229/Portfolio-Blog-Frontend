@@ -37,7 +37,7 @@ function Home() {
             <main className="flex flex-col justify-center items-center h-screen overflow-hidden relative px-4">
                 <div className="mb-6">
                     <img
-                        src="../../public/logos/React.png" 
+                        src="/public/logos/React.png" 
                         alt="Gajanan Vigneswaran"
                         className="w-60 h-60 rounded-full border-4 border-purple-500 shadow-lg"
                     />
