@@ -31,20 +31,20 @@ function Skills() {
     return (
         <div ref={skillsRef} className="flex flex-wrap gap-5 justify-center lg:justify-start w-full lg:w-1/2">
             <div className="flex flex-col basis-32 justify-evenly mr-4">
-                <ImgIcon img="../../public/logos/python.webp" name="Python" delay={getRandomDelay()} visible={visible} />
-                <ImgIcon img="../../public/logos/tensorflow.png" name="TensorFlow" delay={getRandomDelay()} visible={visible} />
-                <ImgIcon img="../../public/logos/c.png" name="C" delay={getRandomDelay()} visible={visible} />
+                <ImgIcon img="/logos/python.webp" name="Python" delay={getRandomDelay()} visible={visible} />
+                <ImgIcon img="/logos/tensorflow.png" name="TensorFlow" delay={getRandomDelay()} visible={visible} />
+                <ImgIcon img="/logos/c.png" name="C" delay={getRandomDelay()} visible={visible} />
             </div>
             <div className="flex flex-col basis-32 justify-evenly ">
-                <ImgIcon img="../../public/logos/javascript-logo.png" name="JavaScript" delay={getRandomDelay()} visible={visible} />
+                <ImgIcon img="/logos/javascript-logo.png" name="JavaScript" delay={getRandomDelay()} visible={visible} />
                 <ImgIcon img="/logos/React.png" name="React" delay={getRandomDelay()} visible={visible} />
-                <ImgIcon img="../../public/logos/node.png" name="Node" delay={getRandomDelay()} visible={visible} />
-                <ImgIcon img="../../public/logos/html.webp" name="HTML" delay={getRandomDelay()} visible={visible} />
+                <ImgIcon img="/logos/node.png" name="Node" delay={getRandomDelay()} visible={visible} />
+                <ImgIcon img="/logos/html.webp" name="HTML" delay={getRandomDelay()} visible={visible} />
             </div>
             <div className="flex flex-col basis-32 justify-evenly ml-4">
-                <ImgIcon img="../../public/logos/java.svg" name="Java" delay={getRandomDelay()} visible={visible} />
-                <ImgIcon img="../../public/logos/postgres.png" name="PostgreSQL" delay={getRandomDelay()} visible={visible} />
-                <ImgIcon img="../../public/logos/css.webp" name="CSS" delay={getRandomDelay()} visible={visible} />
+                <ImgIcon img="/logos/java.svg" name="Java" delay={getRandomDelay()} visible={visible} />
+                <ImgIcon img="/logos/postgres.png" name="PostgreSQL" delay={getRandomDelay()} visible={visible} />
+                <ImgIcon img="/logos/css.webp" name="CSS" delay={getRandomDelay()} visible={visible} />
             </div>
         </div>
     );
