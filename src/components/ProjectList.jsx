@@ -2,6 +2,11 @@ import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
+const BASE_URL = import.meta.env.VITE_BASE_URL;
+if (!BASE_URL) {
+    throw new Error("Missing BASE_URL environment variable.");
+}
+
 function ProjectList() {
     const [projects, setProjects] = useState([]);
     const [hoveredProject, setHoveredProject] = useState(null);
@@ -9,7 +14,7 @@ function ProjectList() {
     useEffect(() => {
         const fetchProjects = async () => {
             try {
-                const response = await fetch("http://localhost:5000/api/projects");
+                const response = await fetch(`${BASE_URL}/api/projects`);
                 if (!response.ok) {
                 throw new Error("Failed to fetch projects");
                 }

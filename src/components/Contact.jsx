@@ -1,5 +1,10 @@
 import React, { useState } from "react";
 
+const BASE_URL = import.meta.env.VITE_BASE_URL;
+if (!BASE_URL) {
+    throw new Error("Missing BASE_URL environment variable.");
+}
+
 function Contact(){
     const [formData, setFormData] = useState({
         name: "",
@@ -19,7 +24,7 @@ function Contact(){
         e.preventDefault();
         setStatus("Sending...");
         try {
-            const response = await fetch("http://localhost:5000/api/contact", {
+            const response = await fetch(`${BASE_URL}/api/contact`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(formData),

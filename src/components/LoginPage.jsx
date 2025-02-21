@@ -2,6 +2,11 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Header from "./Header";
 
+const BASE_URL = import.meta.env.VITE_BASE_URL;
+if (!BASE_URL) {
+    throw new Error("Missing BASE_URL environment variable.");
+}
+
 const LoginPage = () => {
     const navigate = useNavigate();
     const [email, setEmail] = useState('');
@@ -10,7 +15,7 @@ const LoginPage = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch('http://localhost:5000/api/login', {
+            const response = await fetch(`${BASE_URL}/api/login`, {
                 method: 'POST',
                 credentials: 'include', 
                 headers: {

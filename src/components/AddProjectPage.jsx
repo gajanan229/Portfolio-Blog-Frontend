@@ -3,6 +3,11 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import Header from "./Header";
 import Footer from "./Footer";
 
+const BASE_URL = import.meta.env.VITE_BASE_URL;
+if (!BASE_URL) {
+    throw new Error("Missing BASE_URL environment variable.");
+}
+
 const AddProjectPage = () => {
     const navigate = useNavigate();
     const [searchParams] = useSearchParams();
@@ -27,7 +32,7 @@ const AddProjectPage = () => {
     useEffect(() => {
         const fetchCurrentUser = async () => {
         try {
-            const res = await fetch("http://localhost:5000/api/current-user", {
+            const res = await fetch(`${BASE_URL}/api/current-user`, {
                 credentials: "include",
             });
             if (res.ok) {
@@ -55,7 +60,7 @@ const AddProjectPage = () => {
         if (editProjectId) {
             const fetchProject = async () => {
                 try {
-                    const res = await fetch(`http://localhost:5000/api/projects/${editProjectId}`, {
+                    const res = await fetch(`${BASE_URL}/api/projects/${editProjectId}`, {
                         credentials: "include",
                     });
                     if (!res.ok) {
@@ -104,7 +109,7 @@ const AddProjectPage = () => {
             let response;
             if (editProjectId) {
                 // Edit mode: send PATCH request
-                response = await fetch(`http://localhost:5000/api/projects/${editProjectId}`, {
+                response = await fetch(`${BASE_URL}/api/projects/${editProjectId}`, {
                     method: "PATCH",
                     credentials: "include",
                     headers: {
@@ -114,7 +119,7 @@ const AddProjectPage = () => {
                 });
             } else {
                 // New project: send POST request
-                response = await fetch("http://localhost:5000/api/projects", {
+                response = await fetch(`${BASE_URL}/api/projects`, {
                     method: "POST",
                     credentials: "include",
                     headers: {

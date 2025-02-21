@@ -5,6 +5,11 @@ import SortableItem from "./ui/SortableItem";
 import Header from "./Header";
 import Footer from "./Footer";
 
+const BASE_URL = import.meta.env.VITE_BASE_URL;
+if (!BASE_URL) {
+    throw new Error("Missing BASE_URL environment variable.");
+}
+
 const RankProjects = () => {
     const [projects, setProjects] = useState([]);
 
@@ -12,7 +17,7 @@ const RankProjects = () => {
     useEffect(() => {
         const fetchProjects = async () => {
             try {
-                const res = await fetch("http://localhost:5000/api/projects", {
+                const res = await fetch(`${BASE_URL}/api/projects`, {
                     credentials: "include",
                 });
                 if (!res.ok) throw new Error("Failed to fetch projects");
@@ -55,7 +60,7 @@ const RankProjects = () => {
             try {
                 await Promise.all(
                 updatedProjects.map(async (project) => {
-                    const response = await fetch(`http://localhost:5000/api/projects/${project.id}`, {
+                    const response = await fetch(`${BASE_URL}/api/projects/${project.id}`, {
                         method: "PATCH",
                         credentials: "include",
                         headers: { "Content-Type": "application/json" },

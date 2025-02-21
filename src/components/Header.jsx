@@ -2,6 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { Button } from "./ui/Button";
 import { useNavigate } from 'react-router-dom';
 
+const BASE_URL = import.meta.env.VITE_BASE_URL;
+if (!BASE_URL) {
+    throw new Error("Missing BASE_URL environment variable.");
+}
 
 function Header() {
     const [user, setUser] = useState(null);
@@ -12,7 +16,7 @@ function Header() {
     useEffect(() => {
         const fetchCurrentUser = async () => {
             try {
-                const res = await fetch('http://localhost:5000/api/current-user', {
+                const res = await fetch(`${BASE_URL}/api/current-user`, {
                     credentials: 'include'
                 });
                 if (res.ok) {
@@ -28,7 +32,7 @@ function Header() {
 
     const handleLogout = async () => {
         try {
-            const response = await fetch('http://localhost:5000/api/logout', {
+            const response = await fetch(`${BASE_URL}/api/logout`, {
                 method: 'POST',
                 credentials: 'include'
             });

@@ -1,5 +1,10 @@
 import React, { useEffect, useState } from 'react';
 
+const BASE_URL = import.meta.env.VITE_BASE_URL;
+if (!BASE_URL) {
+    throw new Error("Missing BASE_URL environment variable.");
+}
+
 function WorkExperience() {
     const [workExperiences, setWorkExperiences] = useState([]);
     const [selectedJob, setSelectedJob] = useState(workExperiences[0]);
@@ -8,7 +13,7 @@ function WorkExperience() {
         // Fetch the data from your backend
         const fetchData = async () => {
             try {
-                const res = await fetch('http://localhost:5000/api/work-experiences');
+                const res = await fetch(`${BASE_URL}/api/work-experiences`);
                 if (!res.ok) {
                     throw new Error('Failed to fetch work experiences');
                 }

@@ -2,6 +2,11 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Header from "./Header";
 
+const BASE_URL = import.meta.env.VITE_BASE_URL;
+if (!BASE_URL) {
+    throw new Error("Missing BASE_URL environment variable.");
+}
+
 const SignUpPage = () => {
     const navigate = useNavigate();
     const [email, setEmail] = useState('');
@@ -17,7 +22,7 @@ const SignUpPage = () => {
         return;
     }
     try {
-        const response = await fetch('http://localhost:5000/api/register', {
+        const response = await fetch(`${BASE_URL}/api/register`, {
             method: 'POST',
             credentials: 'include', 
             headers: {

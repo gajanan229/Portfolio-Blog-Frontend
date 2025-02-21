@@ -4,7 +4,8 @@ import "react-chat-elements/dist/main.css";
 import '../../public/Chatbot.css';
 import ReactMarkdown from 'react-markdown';
 
-const BASE_URL = "http://localhost:5000";
+
+const BASE_URL = import.meta.env.VITE_BASE_URL;
 if (!BASE_URL) {
     throw new Error("Missing BASE_URL environment variable.");
 }
@@ -15,6 +16,7 @@ export function Chatbot() {
     const [messages, setMessages] = useState([]);
     const [inputText, setInputText] = useState("");
     const [isOpen, setIsOpen] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
     const scrollContainer = useRef(null);
     
     // Creates or reuses a chat thread
@@ -65,14 +67,12 @@ export function Chatbot() {
             credentials: "include",
         });
         const data = await response.json();
-        // Reverse so oldest messages are at top
         const msgs = data.messages.reverse();
         setMessages(msgs);
     
         if (runId && data.status === "completed") {
-            setTimeout(() => {
-                setRunId(undefined);
-            }, 5000);
+            setRunId(undefined);
+            setIsLoading(false);  // Stop loading when response is complete
         }
     }
     
@@ -81,12 +81,17 @@ export function Chatbot() {
         const trimmed = inputText.trim();
         if (!trimmed) return;
     
-        // Show the user message locally
-        setMessages((prev) => [...prev, { role: "user", content: trimmed }]);
+        // Show user message and loading immediately
+        setMessages(prev => [...prev, { role: "user", content: trimmed }]);
         setInputText("");
+        setIsLoading(true);
     
-        // Send to backend
-        await sendMessage(trimmed);
+        try {
+            await sendMessage(trimmed);
+        } catch (error) {
+            console.error("Failed to send message:", error);
+            setIsLoading(false);
+        }
     }
     
     // On mount, create or load a thread
@@ -223,6 +228,24 @@ export function Chatbot() {
                                 </div>
                             </div>
                         ))}
+                        {isLoading && (
+                            <div style={{
+                                display: 'flex',
+                                justifyContent: 'flex-start',
+                                margin: '8px 0'
+                            }}>
+                                <div style={{
+                                    maxWidth: '70%',
+                                    padding: '12px 16px',
+                                    borderRadius: '12px',
+                                    backgroundColor: '#F0F0F0',
+                                }}>
+                                    <div className="loading-dots">
+                                        <div className="dot-flashing"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        )}
                     </div>
         
                     {/* Input Area */}
