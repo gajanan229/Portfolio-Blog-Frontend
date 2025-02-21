@@ -37,7 +37,7 @@ function Skills() {
             </div>
             <div className="flex flex-col basis-32 justify-evenly ">
                 <ImgIcon img="../../public/logos/javascript-logo.png" name="JavaScript" delay={getRandomDelay()} visible={visible} />
-                <ImgIcon img="../../public/logos/React.png" name="React" delay={getRandomDelay()} visible={visible} />
+                <ImgIcon img="/logos/React.png" name="React" delay={getRandomDelay()} visible={visible} />
                 <ImgIcon img="../../public/logos/node.png" name="Node" delay={getRandomDelay()} visible={visible} />
                 <ImgIcon img="../../public/logos/html.webp" name="HTML" delay={getRandomDelay()} visible={visible} />
             </div>
