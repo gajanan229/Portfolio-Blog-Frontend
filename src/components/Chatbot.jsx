@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import { MessageList, Input, Button } from "react-chat-elements";
 import "react-chat-elements/dist/main.css";
-import '../../public/Chatbot.css';
-import ReactMarkdown from 'react-markdown';
+import '/Chatbot.css';
+import ReactMarkdown from 'react-markdown'; 
 
 
 const BASE_URL = import.meta.env.VITE_BASE_URL;

@@ -174,7 +174,7 @@ const Project = () => {
                     <div className="pt-4">
                         <Button click={() => NewTab(github)} variant="default" className="w-40">
                         <div className="flex flex-row justify-center">
-                            <img src="../public/logos/github.png" alt="GitHub" className="w-8 mr-4"/>
+                            <img src="/logos/github.png" alt="GitHub" className="w-8 mr-4"/>
                             <p className="self-center">GitHub</p> 
                         </div>
                         </Button>
