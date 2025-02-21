@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
-const BASE_URL = process.env.VITE_BASE_URL;
+const BASE_URL = "https://portfolio-blog-backend-65t4.onrender.com";
 if (!BASE_URL) {
     throw new Error("Missing BASE_URL environment variable.");
 }
