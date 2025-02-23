@@ -60,7 +60,7 @@ function Home() {
                 style={{ transform: `translateX(${animate ? '350px' : '0px'})` }}
             >
                 <img
-                    src="../../public/logos/React.png"
+                    src="/logos/React.png"
                     alt="Gajanan Vigneswaran"
                     className="w-80 h-80 rounded-full border-4 border-purple-500 shadow-lg"
                 />

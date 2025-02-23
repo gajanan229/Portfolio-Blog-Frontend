@@ -36,14 +36,14 @@ function Skills() {
                 <ImgIcon img="/logos/c.png" name="C" delay={getRandomDelay()} visible={visible} />
             </div>
             <div className="flex flex-col basis-32 justify-evenly ">
-                <ImgIcon img="/logos/javascript-logo.png" name="JavaScript" delay={getRandomDelay()} visible={visible} />
+                <ImgIcon img="/logos/JavaScript-logo.png" name="JavaScript" delay={getRandomDelay()} visible={visible} />
                 <ImgIcon img="/logos/React.png" name="React" delay={getRandomDelay()} visible={visible} />
                 <ImgIcon img="/logos/node.png" name="Node" delay={getRandomDelay()} visible={visible} />
                 <ImgIcon img="/logos/html.webp" name="HTML" delay={getRandomDelay()} visible={visible} />
             </div>
             <div className="flex flex-col basis-32 justify-evenly ml-4">
                 <ImgIcon img="/logos/java.svg" name="Java" delay={getRandomDelay()} visible={visible} />
-                <ImgIcon img="/logos/postgres.png" name="PostgreSQL" delay={getRandomDelay()} visible={visible} />
+                <ImgIcon img="/logos/Postgres.png" name="PostgreSQL" delay={getRandomDelay()} visible={visible} />
                 <ImgIcon img="/logos/css.webp" name="CSS" delay={getRandomDelay()} visible={visible} />
             </div>
         </div>
