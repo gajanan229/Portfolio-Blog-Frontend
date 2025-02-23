@@ -112,36 +112,30 @@ const AddProjectPage = () => {
         };
     
         try {
-            let response;
-            if (editProjectId) {
-                // Edit mode: send PATCH request
-                response = await fetch(`${BASE_URL}/api/projects/${editProjectId}`, {
-                    method: "PATCH",
-                    credentials: "include",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify(payload),
-                });
-            } else {
-                // New project: send POST request
-                response = await fetch(`${BASE_URL}/api/projects`, {
-                    method: "POST",
-                    credentials: "include",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify(payload),
-                });
-            }
-        
-            if (response.ok) {
-                alert("Project saved successfully");
-                navigate("/");
-            } else {
+            const response = editProjectId 
+            ? await fetch(`${BASE_URL}/api/projects/${editProjectId}`, {
+                method: "PATCH",
+                credentials: "include",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(payload),
+            })
+            : await fetch(`${BASE_URL}/api/projects`, {
+                method: "POST",
+                credentials: "include",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(payload),
+            });
+
+            if (!response.ok) {
                 const errData = await response.json();
                 alert(errData.message || "Error saving project");
+                return;
             }
+            
+            // Use setTimeout to ensure navigation after state updates
+            alert("Project saved successfully");
+            setTimeout(() => navigate("/"), 100);
+            
         } catch (error) {
             console.error("Error saving project:", error);
             alert("An error occurred while saving the project");
