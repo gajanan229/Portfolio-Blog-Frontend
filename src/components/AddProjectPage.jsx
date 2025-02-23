@@ -93,6 +93,12 @@ const AddProjectPage = () => {
         e.preventDefault();
         // Split the imagesInput by newline, trim each, and filter out empty lines.
         const images = imagesInput.split("\n").map(url => url.trim()).filter(url => url !== "");
+        
+        if (images.length === 0) {
+            alert("Please provide at least one image URL");
+            return;
+        }
+
         const payload = { 
             name, 
             type, 
