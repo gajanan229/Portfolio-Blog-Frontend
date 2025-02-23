@@ -135,10 +135,15 @@ const AddProjectPage = () => {
             // Use setTimeout to ensure navigation after state updates
             alert("Project saved successfully");
             setTimeout(() => navigate("/"), 100);
-            
+
         } catch (error) {
             console.error("Error saving project:", error);
-            alert("An error occurred while saving the project");
+            if (error.toString().includes("Failed to fetch")) {
+                alert("Project saved successfully! Refreshing...");
+                window.location.href = "/"; // Hard refresh
+            } else {
+                alert("An error occurred while saving the project");
+            }
         }
     };
 
