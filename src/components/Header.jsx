@@ -14,17 +14,26 @@ function Header() {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
     useEffect(() => {
-        const fetchCurrentUser = async () => {
+        const fetchCurrentUser = async (retryCount = 0) => {
             try {
                 const res = await fetch(`${BASE_URL}/api/current-user`, {
                     credentials: 'include'
                 });
-                if (res.ok) {
-                    const userData = await res.json();
-                    setUser(userData);
+                
+                if (res.status === 401) {
+                    setUser(null);
+                    return;
                 }
+
+                if (!res.ok) throw new Error('Failed to fetch user');
+
+                const userData = await res.json();
+                setUser(userData)
             } catch (err) {
                 console.error(err);
+                if (retryCount < 3) {
+                    setTimeout(() => fetchCurrentUser(retryCount + 1), 1000 * (retryCount + 1));
+                }
             }
         };
         fetchCurrentUser();
